@@ -1,0 +1,38 @@
+[tool.pyright]
+reportUnknownLambdaType = false
+reportMissingTypeStubs = false
+reportUnknownMemberType = false
+exclude = ["__pypackages__"]
+
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest~=6.2",
+    "pytest-cov~=2.12",
+    "pytest-watch~=4.2",
+    "pytest-testmon~=1.2",
+    "pytest-json-report~=1.4",
+    "bandit>=1.7.4",
+]
+
+[project]
+name = "{{project_name}}"
+version = "0.1.0"
+description = "{{project_description}}"
+authors = [
+    {name = "{{author}}", email = "{{email}}"},
+]
+dependencies = [
+    "setuptools>=65.3.0",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+[project.optional-dependencies]
+
+[build-system]
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[tool.pdm.scripts]
+cov = {shell = "pdm run pytest --cov=. --cov-report=xml tests"}
