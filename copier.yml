@@ -1,3 +1,25 @@
+_skip_if_exists:
+  - pyproject.toml
+  - pytest.ini
+  - .vscode/settings.json
+
+# CONFIGURATION -------------------------
+_min_copier_version: "6"
+_envops:
+  autoescape: false
+  keep_trailing_newline: true
+_subdirectory: project
+_templates_suffix: .jinja
+_skip_if_exists:
+  - CHANGELOG.md
+#_tasks:
+#- python scripts/post_generation.py
+
+
+_jinja_extensions:
+  - copier_templates_extensions.TemplateExtensionLoader
+  - extensions/context.py:ContextUpdater
+
 # questions
 project_name:
     type: str
@@ -32,3 +54,8 @@ python_version:
     type: str
     when: "{% if python == 'asdf' %}true{% endif %}"
     help: Which python version
+
+use_pep_582:
+    type: bool # This makes Copier ask for y/n
+    help: Want to use pep582
+    default: yes # Without a default, you force the user to answer

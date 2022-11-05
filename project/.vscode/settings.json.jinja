@@ -1,14 +1,14 @@
 {
     "python.analysis.extraPaths": [
-        "${workspaceFolder}/__pypackages__/3.10/lib"
+        "${workspaceFolder}/__pypackages__/{{python_major_version}}/lib"
     ],
     "python.autoComplete.extraPaths": [
-        "${workspaceFolder}/__pypackages__/3.10/lib"
+        "${workspaceFolder}/__pypackages__/{{python_major_version}}/lib"
     ],
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
     "python.envFile": "${workspaceFolder}/.env",
-    "python.testing.pytestPath": "${workspaceFolder}/__pypackages__/3.10/bin/pytest",
+    "python.testing.pytestPath": "${workspaceFolder}/__pypackages__/{{python_major_version}}/bin/pytest",
     "python.testing.pytestArgs": ["--ignore=__pypackages__", "-s", "tests", "--cov=.", "--cov-report=xml"],
     "python.linting.enabled": true,
     "python.linting.lintOnSave": true,
@@ -42,5 +42,7 @@
         "out": true,
         "pdm.lock": true
     },
-    "pythonTestExplorer.testFramework": "pytest"
+    "pythonTestExplorer.testFramework": "pytest",
+    "AREPL.pythonPath": "{{asdf_dir}}/shims/python",
+    "python.defaultInterpreterPath": "{{asdf_dir}}/shims/python",
 }
